@@ -27,10 +27,6 @@ public class ConfigAliyun {
      * 阿里云账号 AccessKey Secret
      */
     private String secret;
-    /**
-     * 解析记录类型
-     */
-    private String type;
 
     /**
      * 域名更新时间

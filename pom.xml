@@ -17,8 +17,6 @@
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- 启动类 -->
-        <jib.main.class>com.the2333.DynamicDnsApplication.java</jib.main.class>
     </properties>
 
     <dependencies>
@@ -99,59 +97,6 @@
                         </exclude>
                     </excludes>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>com.google.cloud.tools</groupId>
-                <artifactId>jib-maven-plugin</artifactId>
-                <version>2.7.1</version>
-                <configuration>
-                    <from>
-                        <image>openjdk:8-jdk-alpine</image>
-                    </from>
-                    <to>
-                        <!--镜像名称和tag，使用了mvn内置变量${project.version}，表示当前工程的version-->
-                        <image>the2333/aliyun-ddns:1.0</image>
-                    </to>
-                    <container>
-                        <!--jvm内存参数-->
-                        <jvmFlags>
-                            <jvmFlag>-Xms128m</jvmFlag>
-                            <jvmFlag>-Xmx128m</jvmFlag>
-                        </jvmFlags>
-                        <!--要暴露的端口-->
-                        <ports>
-                            <port>7005</port>
-                        </ports>
-                        <!--使用该参数将镜像的创建时间与系统时间对其-->
-                        <creationTime>USE_CURRENT_TIMESTAMP</creationTime>
-                        <format>OCI</format>
-                        <!--配置成INHERIT会继承父镜像的entrypoint，如果不配置会默认去找jvmFlags和mainClass配置-->
-                        <entrypoint>
-                            <arg>INHERIT</arg>
-                        </entrypoint>
-                        <!--配置容器内容放置根路径-->
-                        <appRoot>/</appRoot>
-                        <!--相当于docker的WORKDIR，配置后容器内部文件相互访问可以使用相对路径，该相对路径相对于WORKDIR-->
-                        <workingDirectory>/</workingDirectory>
-                        <!-- 如果时packaged则打包成jar放到镜像，否则默认是exploded，会去找.class文件和资源文件 -->
-                        <!--<containerizingMode>packaged</containerizingMode>-->
-                        <!--用没配置安全认证的registry-->
-                        <!--<allowInsecureRegistries>true</allowInsecureRegistries>-->
-                        <!-- 设置时区  -->
-                        <environment>
-                            <TZ>Asia/Shanghai</TZ>
-                        </environment>
-                        <mainClass>${jib.main.class}</mainClass>
-                    </container>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>dockerBuild</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

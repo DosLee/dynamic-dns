@@ -18,7 +18,5 @@ aliyun:
   secret: ""
   # 域名 多个域名逗号分隔 例: music.qq.com,sports.qq.com
   domainNames: example.domain.com, example1.domain.com
-  # 解析记录类型
-  Type: A
   # 域名更新时间, 五分钟更新一次
   cron: "0 0/5 * * * ?"
