@@ -1,0 +1,24 @@
+server:
+  port: 7005
+  tomcat:
+    threads:
+      max: 4
+
+logging:
+  level:
+    com.the2333.service.impl.UpdateDomainServiceImpl: debug
+    root: info
+
+aliyun:
+  # 地域ID
+  regionId: "cn-beijing"
+  # 阿里云账号 AccessKey ID
+  accessKeyId: ""
+  # 阿里云账号 AccessKey Secret
+  secret: ""
+  # 域名 多个域名逗号分隔 例: music.qq.com,sports.qq.com
+  domainNames: example.domain.com, example1.domain.com
+  # 解析记录类型
+  Type: A
+  # 域名更新时间, 五分钟更新一次
+  cron: "0 0/5 * * * ?"
