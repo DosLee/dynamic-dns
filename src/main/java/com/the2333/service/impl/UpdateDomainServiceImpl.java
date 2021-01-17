@@ -80,6 +80,8 @@ public class UpdateDomainServiceImpl implements UpdateDomainService {
      */
     @SneakyThrows
     private void updateDomainRecord(String domainName, List<String> rrList, String ip) {
+        int count = 1;
+        log.debug("方法执行第{}次", count++);
         IAcsClient client = this.setProfile();
         DescribeDomainRecordsRequest request = new DescribeDomainRecordsRequest();
         // 设置主域名
