@@ -26,6 +26,9 @@ public class DynamicCronSchedule implements SchedulingConfigurer {
         this.updateDomainService = updateDomainService;
     }
 
+    /**
+     * 动态传入Cron表达式, 执行域名更新方法
+     */
     @Override
     public void configureTasks(ScheduledTaskRegistrar scheduledTaskRegistrar) {
         scheduledTaskRegistrar.addTriggerTask(updateDomainService::updateDomain

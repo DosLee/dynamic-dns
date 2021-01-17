@@ -98,6 +98,30 @@
                     </excludes>
                 </configuration>
             </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <resources>
+                                <resource>
+                                    <!--复制target目录下的jar包到src/main/docker目录下-->
+                                    <directory>${project.build.directory}</directory>
+                                    <includes>
+                                        <include>${project.name}-${project.version}.jar</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                            <outputDirectory>src/main/docker</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 

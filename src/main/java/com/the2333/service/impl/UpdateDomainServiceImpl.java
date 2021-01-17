@@ -13,11 +13,13 @@ import com.the2333.service.UpdateDomainService;
 import com.the2333.util.IpUtil;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * 描述:
@@ -109,6 +111,12 @@ public class UpdateDomainServiceImpl implements UpdateDomainService {
      * @return Profile
      */
     private IAcsClient setProfile() {
+        // 无效的key
+        if (Objects.isNull(configAliyun) || StringUtils.isBlank(configAliyun.getRegionId())
+                || StringUtils.isBlank(configAliyun.getAccessKeyId()) || StringUtils.isBlank(configAliyun.getSecret())) {
+            log.error("配置信息错误. {}", configAliyun);
+            throw new RuntimeException("配置信息不能为空");
+        }
         DefaultProfile profile = DefaultProfile.getProfile(configAliyun.getRegionId()
                 , configAliyun.getAccessKeyId(), configAliyun.getSecret());
         return new DefaultAcsClient(profile);
