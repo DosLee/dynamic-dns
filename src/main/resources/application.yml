@@ -8,6 +8,8 @@ logging:
   level:
     com.the2333.service.impl.UpdateDomainServiceImpl: debug
     root: info
+  file:
+    name: /log/dynamic-dns.log
 
 aliyun:
   # 地域ID
