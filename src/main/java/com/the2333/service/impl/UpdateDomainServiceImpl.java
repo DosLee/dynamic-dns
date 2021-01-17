@@ -32,6 +32,8 @@ import java.util.Objects;
 @Component
 public class UpdateDomainServiceImpl implements UpdateDomainService {
 
+    private int count = 1;
+
     /**
      * 域名处理类, 从配置文件中读取信息并加载
      */
@@ -80,7 +82,6 @@ public class UpdateDomainServiceImpl implements UpdateDomainService {
      */
     @SneakyThrows
     private void updateDomainRecord(String domainName, List<String> rrList, String ip) {
-        int count = 1;
         log.debug("方法执行第{}次", count++);
         IAcsClient client = this.setProfile();
         DescribeDomainRecordsRequest request = new DescribeDomainRecordsRequest();

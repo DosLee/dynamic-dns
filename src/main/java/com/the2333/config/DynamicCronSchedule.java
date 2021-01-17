@@ -31,6 +31,7 @@ public class DynamicCronSchedule implements SchedulingConfigurer {
      */
     @Override
     public void configureTasks(ScheduledTaskRegistrar scheduledTaskRegistrar) {
+        log.info("定时器配置: {}", configAliyun.getCron());
         scheduledTaskRegistrar.addTriggerTask(updateDomainService::updateDomain
                 , triggerContext -> new CronTrigger(configAliyun.getCron()).nextExecutionTime(triggerContext));
     }
