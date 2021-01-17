@@ -5,7 +5,7 @@ server:
       max: 4
 
 logback:
-  loghome: /home/the2333/log
+  loghome: /log
 
 aliyun:
   # 地域ID

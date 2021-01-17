@@ -2,5 +2,6 @@ FROM openjdk:8-jdk-alpine
 RUN addgroup -S the2333 && adduser -S the2333 -G the2333
 USER the2333:the2333
 COPY ./*.jar app.jar
-VOLUME /home/the2333/log
+VOLUME /log/
+RUN chmod -R 777 /log/
 ENTRYPOINT ["java","-jar","/app.jar"]
