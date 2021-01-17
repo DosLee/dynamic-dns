@@ -4,12 +4,8 @@ server:
     threads:
       max: 4
 
-logging:
-  level:
-    com.the2333.service.impl.UpdateDomainServiceImpl: debug
-    root: info
-  file:
-    name: /log/dynamic-dns.log
+logback:
+  logDir: /log/dynamic-dns.log
 
 aliyun:
   # 地域ID
