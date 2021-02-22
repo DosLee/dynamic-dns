@@ -7,3 +7,6 @@
 动态更新域名IP地址
 
 ## 下载
+
+## 使用
+Docker 命令： `docker run -d --name dns -e aliyun.accessKeyId=access -e aliyun.secret=password -e aliyun.domainNames="example.domain.com" -e aliyun.cron="0 0/5 * * * ?"  --restart=always dynamic-dns:v1.0`
